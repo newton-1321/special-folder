@@ -2,26 +2,6 @@ const secondText = document.getElementById("small-txt-1");
 const thirdText = document.getElementById("small-txt-2");
 const popUp = document.getElementById("pop-up");
 const popUp2 = document.getElementById("pop-up-2");
-const nodemailer = require('nodemailer');
-require('dotenv').config();
-
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.Email_User,
-      pass: process.env.Email_Pass
-    }
-  });
-
-transporter.sendMail({
-    to: process.env.Email_User,
-    subject: "did it work?",
-    text: "worked?"
-}).then( () => {  
-    console.log("It worked !!!");
-}).catch( (err) => {
-    console.error(err)
-});
 
 document.getElementById("card-btn-1").onclick = function(){
     popUp.classList.remove("close");
