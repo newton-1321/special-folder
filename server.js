@@ -1,5 +1,17 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 10000;
+
+
+app.get('/', (req, res) => {
+  res.send('🚀 Hello from Render + Node!');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -9,12 +21,3 @@ var transporter = nodemailer.createTransport({
     }
   });
 
-transporter.sendMail({
-    to: process.env.Email_User,
-    subject: "did it work?",
-    text: "worked?"
-}).then( () => {  
-    console.log("It worked !!!");
-}).catch( (err) => {
-    console.error(err)
-});
